@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DQN v1
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center ">
+        DQN v1
+    </h3>
+    <h5>
+        DQN Stratified
+    </h5>
+
+    <form action="/dqnv1r" method="post">
+        <label>
+            #Episodi:
+            <br> [10k]
+            <input type="range" name="dqnv1ramountRange1" min="5" max="15" value="10" oninput="this.nextElementSibling.value = this.value"> [15] &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="number" name="dqnv1ramountInput1" min="5" max="15" value="10" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+        </label>
+        <br>
+        <label>
+            beta1:
+            <br> [10e-3]
+            <input type="range" name="dqnv1ramountRange2" min="10" max="100" value="60" oninput="this.nextElementSibling.value = this.value"> [30e-3] &nbsp&nbsp
+            <input type="number" name="dqnv1ramountInput2" min="10" max="100" value="60" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+        </label>
+        <br>
+        <label>
+            beta2:
+            <br> [10e-3]
+            <input type="range" name="dqnv1ramountRange3" min="10" max="30" value="20" oninput="this.nextElementSibling.value = this.value"> [30e-3] &nbsp
+            <input type="number" name="dqnv1ramountInput3" min="10" max="30" value="20" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+        </label>
+        <br>
+        <input type="radio" name="dqnv1rtable" id="option1" value="new"> DQNv1 TABLE NEW </input>
+        <br>
+        <input type="radio" name="dqnv1rtable" id="option2" value="def" checked> DQNv1 TABLE PRE-TRAINED </input>
+        <br>
+        <button class="btn btn-dark" type="submit">RUN DQNv1</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <form action="/dqnv1s" method="post">
+        <button class="btn btn-dark" type="submit">SHOW DQN v1</button>
+    </form>
+{% endblock %}

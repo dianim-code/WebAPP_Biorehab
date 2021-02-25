@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Prodotti e servizi
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center ">
+        Prodotti e servizi
+    </h3>
+    <br>
+    <br>
+    <br>
+    <h3>
+        Lastest
+    </h3>
+    <h5>
+        <br>
+        <form action="/siirqt">
+        <button><b>Q-Table RL</b> on SIIR Model</button>
+        </form>
+        <br>
+        <form action="/dqnv2r">
+        <button><b>DQN RL</b> on SIIR Model + Stratified Pop + SocioEcon + Vaccini</button>
+        </form>
+    </h5>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>
+        Obsolete (On Demand)
+    </h3>
+    <h5>
+        <br>
+        <form action="/contact">
+        <button><b>Q-Table RL</b> on SIR Model</button>
+        </form>
+        <br>
+        <form action="/contact">
+        <button><b>DQN RL</b> on SIIR Model + Stratified Pop</button>
+        </form>
+        <br>
+        <form action="/contact">
+        <button><b>DQN RL</b> on SIIR Model + Stratified Pop + SocioEcon</button>
+        </form>
+    </h5>
+    <br>
+    <br>
+    <br>
+{% endblock %}

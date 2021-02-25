@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center ">
+        Contatti
+    </h3>
+    <br>
+    <br>
+    <br>
+    <h5>
+        Contattaci:
+    </h5>
+    <form action="/contact" method="post">
+        <label>
+            <h5>
+                Indirizzo Mail:
+                <br> 
+                <input type="text" name="mail"  style="width: 1000px;"> 
+                <br> 
+                Oggetto:
+                <br> 
+                <input type="text" name="obj" style="width: 1000px;"> 
+                <br>
+                Messaggio:
+                <br> 
+                <textarea type="text" name="body" style="width: 1000px; height: 500px; text-align: left;"></textarea>
+            </h5>
+        </label>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-dark" type="submit"><h5>Contact</h5></button>
+    </form>
+{% endblock %}

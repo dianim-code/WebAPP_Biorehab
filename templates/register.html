@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register Form
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group" style="margin: auto; width: 50%;">
+            <label>
+            <h5>
+                Username:
+                <br>
+                <br>
+                <input autocomplete="off" autofocus class="form-control" name="usernameReg" placeholder="Username" type="text" style="width: 500px">
+            </h5>
+            </label>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="form-group" style="margin: auto; width: 50%;">
+            <label>
+            <h5>
+                Password:
+                <br>
+                <br>
+                <input class="form-control" name="passwordReg" placeholder="Password" type="password" style="width: 500px">
+            </h5>
+            </label>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="form-group" style="margin: auto; width: 50%;">
+            <label>
+            <h5>
+                Confirm Password:
+                <br>
+                <br>
+                <input class="form-control" name="passwordRegCon" placeholder="Confirm Password" type="password" style="width: 500px">
+            </h5>
+            </label>
+        </div>
+
+        <br>
+        <br>
+
+        <div style="margin: auto; width: 50%;">
+            <button class="btn btn-dark" type="submit">Sign in</button>
+        </div>
+        
+    </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SIIR - Q
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center ">
+        SIIR - Q Table: Results
+    </h3>
+    <h5>
+        #Episodi generati dal software con indicazione delle azioni scelte
+    </h5>
+    <table class="table">
+        {% for file in names %}
+            <tr>
+                <td>
+                    <img style='height: 100%; width: 100%; object-fit: contain' src='{{file}}'></img>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

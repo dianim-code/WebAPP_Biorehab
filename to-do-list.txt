@@ -1,0 +1,10 @@
+- MAIL
+Adding support for mail
+- REGISTER
+Adding a Mail token
+- DB
+Migrate form CS50.py to SQLAlchemy
+- LAST MILE
+Add code to fractalize
+Pass the image to code
+Remove image

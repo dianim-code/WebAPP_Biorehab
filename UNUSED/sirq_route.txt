@@ -1,0 +1,49 @@
+# -------------------------------------------- SIR Q --------------------------------------------
+# ---------------------- SIR Q TRAIN ----------------------
+@app.route("/sirqt", methods=["GET", "POST"])
+# ROUTE NAME/FUNCION: Run SIR Model Q Learning
+@login_required
+def sirqtrain():
+    """SIR Model"""
+    if request.method == "POST":
+        # Alert Test Below
+        # return apology("R SIR Q ENTRANCE", 420)
+        #sirqt()
+        var1 =  request.form["sirqtamountRange1"]
+        var2 =  request.form["sirqtamountRange2"]
+        var3 =  request.form["sirqtamountRange3"]
+        print('value is', var1, 'and', var2, 'and', var3)
+        return render_template("sirq.html")
+    else:
+        return render_template("sirq_get.html")
+
+# ---------------------- SIR Q TEST ----------------------
+@app.route("/sirqr", methods=["GET", "POST"])
+# ROUTE NAME/FUNCION: Run SIR Model Q Learning
+@login_required
+def sirqrunfun():
+    """SIR Model"""
+    if request.method == "POST":
+        # Alert Test Below
+        # return apology("R SIR Q ENTRANCE", 420)
+        #sirqr()
+        var1 =  request.form["sirqramountRange1"]
+        var2 =  request.form["sirqramountRange2"]
+        var3 =  request.form["sirqramountRange3"]
+        print('value is', var1, 'and', var2, 'and', var3)
+        return render_template("sirq.html")
+    else:
+        return render_template("sirq_get.html")
+
+# ---------------------- SIR Q SHOW ----------------------
+@app.route("/sirqs", methods=["GET", "POST"])
+# ROUTE NAME/FUNCION: Show SIR Model Q Learning
+@login_required
+def sirqshowfun():
+    """SIR Model"""
+    if request.method == "POST":
+        # Alert Test Below
+        # return apology("S SIR Q ENTRANCE", 420)
+        return render_template("sirq.html", url = 'static/images/sir_new_p1.png')
+    else:
+        return render_template("sirq_get.html")

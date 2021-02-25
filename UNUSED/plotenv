@@ -1,0 +1,261 @@
+def plot_env(env,txt,episode,perc):
+    perc_u,perc_m,perc_o=perc
+    with plt.style.context('classic'):
+  
+      suc_u=(env.history_u[0])*perc_u
+      prev_suc=(env.history_prev_u[0])*perc_u
+      fig, ax = plt.subplots(figsize=(12, 4), num='classic')
+      plt.plot(suc_u,'r',linewidth=2,label='under')
+  
+      suc_m=(env.history_m[0])*perc_m
+      prev_suc+=(env.history_prev_m[0])*perc_m
+      plt.plot(suc_m,'g',linewidth=2,label='middle')
+  
+      suc_o=(env.history_o[0])*perc_o
+      prev_suc+=(env.history_prev_m[0])*perc_o
+      plt.plot(suc_o,'b',linewidth=2,label='over')
+  
+      suc=suc_u+suc_m+suc_o
+      plt.plot(suc,'k',linewidth=2,label='tot_suc')
+      # Add labels to the plot
+      style = dict(size=10, color='black')
+      for i in range(1,len(env.action_list)):
+        if env.action_list[i]!=env.action_list[i-1]:
+          idx_suc=max(range(7,len(suc)), key=suc.__getitem__)
+          index_action=1+8*(i-1)
+          suc_action=suc[index_action-1]
+          #print(f"AZIONE DIVERSA: passo {index_action} valore {suc_action}")
+          if index_action>idx_suc or index_action==1:
+            offset=20
+          else:
+            offset=-20
+          #ax.text(7*i,suc[7*i], env.action_list[i], **style)
+          
+          ax.annotate(env.action_list[i], xy=(index_action, suc_action),xycoords='data',xytext=(index_action+offset, 0.05+0.02*math.sin(index_action)+suc_action),bbox=dict(boxstyle="round", alpha=0.2),arrowprops=dict(arrowstyle="fancy"))
+      # Label the axes
+      ax.set(title='SUSCEPTIBLE',
+            ylabel='susceptible %')
+      
+      ax.set_xlabel(f"days\n\n")
+  
+      plt.ylim([0, max(max(suc),max(prev_suc))])
+      ax=plt.plot(prev_suc,'k--',linewidth=1,label='previsions')
+      plt.legend()
+      
+      fig.set_size_inches(20, 10, forward=True)
+
+      # ------------------------------------------------------------------------------------------
+      name = '2_'+str(episode)+'0suc.png'
+      ptf = os.path.join(images_dir,name)
+      plt.savefig(ptf)
+      # ------------------------------------------------------------------------------------------
+
+      #plt.show()
+
+    with plt.style.context('classic'):
+  
+      inf_u=(env.history_u[1]+env.history_u[2])*perc_u
+      prev_inf=(env.history_prev_u[1]+env.history_prev_u[2])*perc_u
+      fig, ax = plt.subplots(figsize=(12, 4), num='classic')
+      plt.plot(inf_u,'r',linewidth=2,label='under')
+  
+      inf_m=(env.history_m[1]+env.history_m[2])*perc_m
+      prev_inf+=(env.history_prev_m[1]+env.history_prev_m[2])*perc_m
+      plt.plot(inf_m,'g',linewidth=2,label='middle')
+  
+      inf_o=(env.history_o[1]+env.history_o[2])*perc_o
+      prev_inf+=(env.history_prev_m[1]+env.history_prev_m[2])*perc_o
+      plt.plot(inf_o,'b',linewidth=2,label='over')
+  
+      inf=inf_u+inf_m+inf_o
+      plt.plot(inf,'k',linewidth=2,label='tot_inf')
+      # Add labels to the plot
+      style = dict(size=10, color='black')
+      for i in range(1,len(env.action_list)):
+        if env.action_list[i]!=env.action_list[i-1]:
+          idx_inf=max(range(7,len(inf)), key=inf.__getitem__)
+          index_action=1+8*(i-1)
+          inf_action=inf[index_action-1]
+          #print(f"AZIONE DIVERSA: passo {index_action} valore {inf_action}")
+          if index_action>idx_inf or index_action==1:
+            offset=20
+          else:
+            offset=-20
+          #ax.text(7*i,inf[7*i], env.action_list[i], **style)
+          
+          ax.annotate(env.action_list[i], xy=(index_action, inf_action),xycoords='data',xytext=(index_action+offset, 0.05+0.02*math.sin(index_action)+inf_action),bbox=dict(boxstyle="round", alpha=0.2),arrowprops=dict(arrowstyle="fancy"))
+      # Label the axes
+      ax.set(title='INFECTED',
+            ylabel='infected %')
+      
+      ax.set_xlabel(f"days\n\n")
+  
+      plt.ylim([0, max(max(inf),max(prev_inf))])
+      ax=plt.plot(prev_inf,'k--',linewidth=1,label='previsions')
+      plt.legend()
+      
+      fig.set_size_inches(20, 10, forward=True)
+
+      # ------------------------------------------------------------------------------------------
+      name = '2_'+str(episode)+'1inf.png'
+      ptf = os.path.join(images_dir,name)
+      plt.savefig(ptf)
+      # ------------------------------------------------------------------------------------------
+
+      #plt.show()
+
+    with plt.style.context('classic'):
+  
+      hosp_u=(env.history_u[3])*perc_u
+      prev_hosp=(env.history_prev_u[3])*perc_u
+      fig, ax = plt.subplots(figsize=(12, 4), num='classic')
+      plt.plot(hosp_u,'r',linewidth=2,label='under')
+  
+      hosp_m=(env.history_m[3])*perc_m
+      prev_hosp+=(env.history_prev_m[3])*perc_m
+      plt.plot(hosp_m,'g',linewidth=2,label='middle')
+  
+      hosp_o=(env.history_o[3])*perc_o
+      prev_hosp+=(env.history_prev_m[3])*perc_o
+      plt.plot(hosp_o,'b',linewidth=2,label='over')
+  
+      hosp=hosp_u+hosp_m+hosp_o
+      plt.plot(hosp,'k',linewidth=2,label='tot_hosp')
+      # Add labels to the plot
+      style = dict(size=10, color='black')
+      for i in range(1,len(env.action_list)):
+        if env.action_list[i]!=env.action_list[i-1]:
+          idx_hosp=max(range(7,len(hosp)), key=hosp.__getitem__)
+          index_action=1+8*(i-1)
+          hosp_action=hosp[index_action-1]
+          #print(f"AZIONE DIVERSA: passo {index_action} valore {hosp_action}")
+          if index_action>idx_hosp or index_action==1:
+            offset=20
+          else:
+            offset=-20
+          #ax.text(7*i,hosp[7*i], env.action_list[i], **style)
+          
+          ax.annotate(env.action_list[i], xy=(index_action, hosp_action),xycoords='data',xytext=(index_action+offset, 0.05+0.02*math.sin(index_action)+hosp_action),bbox=dict(boxstyle="round", alpha=0.2),arrowprops=dict(arrowstyle="fancy"))
+      # Label the axes
+      ax.set(title='HOSPEDALIZED',
+            ylabel='hospedalized %')
+      
+      ax.set_xlabel(f"days\n\n")
+  
+      plt.ylim([0, max(max(hosp),max(prev_hosp))])
+      ax=plt.plot(prev_hosp,'k--',linewidth=1,label='previsions')
+      plt.legend()
+      
+      fig.set_size_inches(20, 10, forward=True)
+
+      # ------------------------------------------------------------------------------------------
+      name = '2_'+str(episode)+'2hos.png'
+      ptf = os.path.join(images_dir,name)
+      plt.savefig(ptf)
+      # ------------------------------------------------------------------------------------------
+
+      #plt.show()
+
+    with plt.style.context('classic'):
+  
+      rec_u=(env.history_u[4])*perc_u
+      prev_rec=(env.history_prev_u[4])*perc_u
+      fig, ax = plt.subplots(figsize=(12, 4), num='classic')
+      plt.plot(rec_u,'r',linewidth=2,label='under')
+  
+      rec_m=(env.history_m[4])*perc_m
+      prev_rec+=(env.history_prev_m[4])*perc_m
+      plt.plot(rec_m,'g',linewidth=2,label='middle')
+  
+      rec_o=(env.history_o[4])*perc_o
+      prev_rec+=(env.history_prev_m[4])*perc_o
+      plt.plot(rec_o,'b',linewidth=2,label='over')
+  
+      rec=rec_u+rec_m+rec_o
+      plt.plot(rec,'k',linewidth=2,label='tot_rec')
+      # Add labels to the plot
+      style = dict(size=10, color='black')
+      for i in range(1,len(env.action_list)):
+        if env.action_list[i]!=env.action_list[i-1]:
+          idx_rec=max(range(7,len(rec)), key=rec.__getitem__)
+          index_action=1+8*(i-1)
+          rec_action=rec[index_action-1]
+          #print(f"AZIONE DIVERSA: passo {index_action} valore {rec_action}")
+          if index_action>idx_rec or index_action==1:
+            offset=20
+          else:
+            offset=-20
+          #ax.text(7*i,rec[7*i], env.action_list[i], **style)
+          
+          ax.annotate(env.action_list[i], xy=(index_action, rec_action),xycoords='data',xytext=(index_action+offset, 0.05+0.02*math.sin(index_action)+rec_action),bbox=dict(boxstyle="round", alpha=0.2),arrowprops=dict(arrowstyle="fancy"))
+      # Label the axes
+      ax.set(title='RECOVERED',
+            ylabel='recovered %')
+      
+      ax.set_xlabel(f"days\n\n")
+  
+      plt.ylim([0, max(max(rec),max(prev_rec))])
+      ax=plt.plot(prev_rec,'k--',linewidth=1,label='previsions')
+      plt.legend()
+      
+      fig.set_size_inches(20, 10, forward=True)
+
+      # ------------------------------------------------------------------------------------------
+      name = '2_'+str(episode)+'3rec.png'
+      ptf = os.path.join(images_dir,name)
+      plt.savefig(ptf)
+      # ------------------------------------------------------------------------------------------
+
+      #plt.show()
+
+    with plt.style.context('classic'):
+  
+      dea_u=(env.history_u[5])*perc_u
+      prev_dea=(env.history_prev_u[5])*perc_u
+      fig, ax = plt.subplots(figsize=(12, 4), num='classic')
+      plt.plot(dea_u,'r',linewidth=2,label='under')
+  
+      dea_m=(env.history_m[5])*perc_m
+      prev_dea+=(env.history_prev_m[5])*perc_m
+      plt.plot(dea_m,'g',linewidth=2,label='middle')
+  
+      dea_o=(env.history_o[5])*perc_o
+      prev_dea+=(env.history_prev_m[5])*perc_o
+      plt.plot(dea_o,'b',linewidth=2,label='over')
+  
+      dea=dea_u+dea_m+dea_o
+      plt.plot(dea,'k',linewidth=2,label='tot_dea')
+      # Add labels to the plot
+      style = dict(size=10, color='black')
+      for i in range(1,len(env.action_list)):
+        if env.action_list[i]!=env.action_list[i-1]:
+          idx_dea=max(range(7,len(dea)), key=dea.__getitem__)
+          index_action=1+8*(i-1)
+          dea_action=dea[index_action-1]
+          #print(f"AZIONE DIVERSA: passo {index_action} valore {dea_action}")
+          if index_action>idx_dea or index_action==1:
+            offset=20
+          else:
+            offset=-20
+          #ax.text(7*i,dea[7*i], env.action_list[i], **style)
+          
+          ax.annotate(env.action_list[i], xy=(index_action, dea_action),xycoords='data',xytext=(index_action+offset, 0.05+0.02*math.sin(index_action)+dea_action),bbox=dict(boxstyle="round", alpha=0.2),arrowprops=dict(arrowstyle="fancy"))
+      # Label the axes
+      ax.set(title='DEATH',
+            ylabel='death %')
+      
+      ax.set_xlabel(f"days\n\n")
+  
+      plt.ylim([0, max(max(dea),max(prev_dea))])
+      ax=plt.plot(prev_dea,'k--',linewidth=1,label='previsions')
+      plt.legend()
+      
+      fig.set_size_inches(20, 10, forward=True)
+
+      # ------------------------------------------------------------------------------------------
+      name = '2_'+str(episode)+'4dea.png'
+      ptf = os.path.join(images_dir,name)
+      plt.savefig(ptf)
+      # ------------------------------------------------------------------------------------------
+
+      #plt.show()

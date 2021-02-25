@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DQN
+{% endblock %}
+
+{% block main %}
+    <h3 style="text-align: center ">
+        DQN: Stratified + SocioEcon + Vaccine
+    </h3>
+    <br>
+    <br>
+    <br>
+    <img src="../static/images/rete.png" style="display: block; margin-left: auto; margin-right: auto;  width: 50%; height: auto; filter: invert(1);">
+    <br>
+    <br>
+    <br>
+    <form action="/dqnv2r" method="post">
+        <label>
+            <h5>
+                Peso SocioEcon:
+                <br> [0]
+                <input type="range" name="dqnv2ramountRange1" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value"> [100] &nbsp&nbsp
+                <input type="number" name="dqnv2ramountInput1" min="0" max="100" value="0" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+                <br>
+                <br>
+                Peso Infezione:
+                <br> [0]
+                <input type="range" name="dqnv2ramountRange2" min="0" max="100" value="100" oninput="this.nextElementSibling.value = this.value"> [100] &nbsp&nbsp
+                <input type="number" name="dqnv2ramountInput2" min="0" max="100" value="100" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+                <br>
+                <br>
+                Peso Tempo:
+                <br> [0]
+                <input type="range" name="dqnv2ramountRange3" min="0" max="100" value="50" oninput="this.nextElementSibling.value = this.value"> [100] &nbsp&nbsp
+                <input type="number" name="dqnv2ramountInput3" min="0" max="100" value="50" oninput="this.previousElementSibling.value=this.value" style="width: 75px" />
+                <br>
+                <br>
+                Vaccini:
+                <br> [No]
+                <input type="range" name="dqnv2ramountRange4" min="0" max="1" value="1" oninput="this.nextElementSibling.value = this.value"> [Sì] &nbsp&nbsp
+                <br>
+                <br>
+                <input type="radio" name="dqnv2rtable" id="option1" value="new">DQN NEW</input>
+                <br>
+                <br>
+                <input type="radio" name="dqnv2rtable" id="option2" value="def" checked>DQN PRE-TRAINED</input>
+                <br>
+                <br>
+                <label><input type="checkbox" name="onlyExploit" value = "Only" checked>&nbsp;&nbsp;Only Exploit</label>
+                <br>
+                <br>
+                <button class="btn btn-dark" type="submit">RUN DQN</button>
+            </h5>
+        </label>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <form action="/dqnv2s" method="post">
+        <h5>
+            <label><input type="checkbox" name="Susceptible" value = "suc">&nbsp;&nbsp;Susceptible</label>
+            <br>
+            <label><input type="checkbox" name="Infected" value = "inf">&nbsp;&nbsp;Infected</label>
+            <br>
+            <label><input type="checkbox" name="Recovered" value = "rec">&nbsp;&nbsp;Recovered</label>
+            <br>
+            <label><input type="checkbox" name="Hospitalized" value = "hos">&nbsp;&nbsp;Hospitalized</label>
+            <br>
+            <label><input type="checkbox" name="Death" value = "dea">&nbsp;&nbsp;Death</label>
+            <br>
+            <br>
+            <button class="btn btn-dark" type="submit">SHOW DQN</button>
+        </h5>
+    </form>
+{% endblock %}

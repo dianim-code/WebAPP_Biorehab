@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="form-group" style="margin: auto; width: 50%;">
+            <label>
+            <h5>
+                Username:
+
+                <br>
+                <br>
+
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" style="width: 500px">
+            </h5>
+            </label>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="form-group" style="margin: auto; width: 50%;">
+            <label>
+            <h5>
+                Password:
+
+                <br>
+                <br>
+
+                <input class="form-control" name="password" placeholder="Password" type="password" style="width: 500px">
+            <h5>
+            </label>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div style="margin: auto; width: 50%;">
+            <button class="btn btn-dark" type="submit"><h5>Log In</h5></button>
+        </div>
+    </form>
+{% endblock %}
